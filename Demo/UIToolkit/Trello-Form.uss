@@ -1,0 +1,23 @@
+#trello-form #unity-text-input {
+    padding: 10px;
+}
+
+#trello-form TextField Label {
+    color: white;
+    -unity-text-align: middle-left;
+}
+
+#trello-form RadioButton Label {
+    color: white;
+    -unity-text-align: middle-left;
+}
+
+VisualElement.unity-radio-button__input {
+    width: 20px;
+    flex-shrink: 1;
+    flex-grow: 0;
+}
+
+.shrink {
+    
+}

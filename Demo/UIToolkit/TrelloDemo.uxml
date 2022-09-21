@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Unity-Trello/Demo/UIToolkit/Trello-Form.uss?fileID=7433441132597879392&amp;guid=f86ac0d40a1594832baba697b5899f58&amp;type=3#Trello-Form" />
+    <ui:VisualElement name="body" picking-mode="Ignore" style="flex-grow: 1;">
+        <ui:VisualElement picking-mode="Ignore" style="margin-bottom: auto; flex-direction: row-reverse;">
+            <ui:Button text="Send Feedback" display-tooltip-when-elided="true" name="show-feedback-form" style="flex-shrink: 1; margin-left: auto; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 25%; rotate: 0;" />
+            <ui:Label text="Fill in the empty API details in the Scriptable Object" display-tooltip-when-elided="true" picking-mode="Ignore" style="margin-bottom: 0; margin-left: 0; margin-right: auto; margin-top: 0; -unity-text-align: middle-left; width: 60%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="trello-wrapper" picking-mode="Ignore" style="margin-top: auto;">
+            <ui:VisualElement name="trello-form" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; align-items: flex-start; background-color: rgb(0, 84, 128); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                <ui:VisualElement style="flex-direction: row; flex-grow: 1; flex-shrink: 0;">
+                    <ui:TextField label="Title" value="Bug Title..." name="trello-title" style="width: 50%; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; flex-grow: 1; flex-shrink: 0;" />
+                    <ui:RadioButton label="Send Screenshot" name="trello-screenshot" tabindex="1" value="true" style="flex-shrink: 1; flex-direction: row-reverse; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 1; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+                </ui:VisualElement>
+                <ui:TextField value="filler text" text="filler text" tabindex="2" multiline="true" name="trello-desc" style="width: 75%; min-height: 100px; max-height: 200px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+                <ui:Button text="Send Feedback" display-tooltip-when-elided="true" name="trello-submit" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; flex-shrink: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

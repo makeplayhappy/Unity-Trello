@@ -8,6 +8,7 @@
  * by Àdam Carballo under MIT license.
  * https://github.com/AdamCarballo/Unity-Trello
  */
+#define DEBUG_TRELLO
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -178,11 +179,42 @@ namespace Trello {
 		}*/
 
 		/// <summary>
+		/// Builds a web request and returns it.
+		/// </summary>
+		/// <returns>UnityWebRequest.</returns>
+		/// <param name="card">Trello card to build request from.</param>
+
+		public UnityWebRequest BuildWebRequest(TrelloCard card) {
+#if DEBUG_TRELLO			
+			Debug.Log($"Trello card\n idList {card.idList} \n urlSource {card.urlSource} \n BaseURL {CardBaseUrl} \n key={_key} token={_token} \n" + 
+			$"name = {card.name} desc = {card.desc} due = {card.due}");
+#endif
+
+			var post = new WWWForm();
+			post.AddField("name", card.name);
+			post.AddField("desc", card.desc);
+			post.AddField("due", card.due);
+			post.AddField("idList", card.idList);
+			post.AddField("urlSource", card.urlSource);
+			if (card.fileSource != null && card.fileName != null) {
+				post.AddBinaryData("fileSource", card.fileSource, card.fileName);
+			}
+
+			return UnityWebRequest.Post($"{CardBaseUrl}?key={_key}&token={_token}", post);
+		}
+
+
+
+		/// <summary>
 		/// Uploads a given TrelloCard object to the Trello server.
 		/// </summary>
 		/// <returns>Trello card uploaded.</returns>
 		/// <param name="card">Trello card to upload.</param>
 		public TrelloCard UploadCard(TrelloCard card) {
+#if DEBUG_TRELLO			
+			Debug.Log($"Trello card\n idList {card.idList} \n urlSource {card.urlSource} \n BaseURL {CardBaseUrl} \n key={_key} token={_token} \n" + 
+			$"name = {card.name} desc = {card.desc} due = {card.due}");
+#endif
 
 			var post = new WWWForm();
 			post.AddField("name", card.name);
@@ -200,10 +232,21 @@ namespace Trello {
 			// Wait for request to return
 			while (!operation.isDone) {
 				CheckWebRequestStatus("Could not upload the Trello card.", uwr);
-			}
+			}	
 
+#if DEBUG_TRELLO			
+			string headers = "";
+			foreach (KeyValuePair<string, string> kvp in uwr.GetResponseHeaders() ){
+				headers += string.Format("Key = {0}, Value = {1} \n", kvp.Key, kvp.Value);
+			}
+			Debug.Log( headers );
 			Debug.Log($"Trello card sent!\nResponse {uwr.responseCode}");
+#endif
+			
+			uwr.Dispose();
+
 			return card;
 		}
+		
 	}
 }

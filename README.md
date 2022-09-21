@@ -1,6 +1,6 @@
 Unity Trello
 =================
-☑️️ Generate Trello cards directly from Unity
+☑️️ Generate Trello cards directly from Unity using UI Toolkit
 
 Overview
 ----
@@ -12,14 +12,14 @@ This repository allows you to use a Trello board as a bug and issue storage, cre
 License
 ---
 This repository is based on [Trello-Cards-Unity](https://github.com/bfollington/Trello-Cards-Unity) by [bfollington](https://github.com/bfollington).<br>
-Even though the code has been improved and has added features over the original source, all the files that come from the original repository (*stated on the header comment on each file*) remain under the original author license.<br><br>
+and [Unity-Trello](https://github.com/AdamCarballo/Unity-Trello) by Adam Carballo  
+Even though the code has been improved and has added features over the original sources, all the files that come from the original repository (*stated on the header comment on each file*) remain under the original author license.<br><br>
 This repository also uses `MiniJSON.cs` whose license is stated on the header comment inside the file.
 
 Any other files remain under the MIT License.
 
 Install
 ----
-The source code is available directly from the folders, or if you want you can download only the [Unitypackage](https://github.com/AdamCarballo/Unity-Trello/releases) and import from there.
 
 Before continuing, read the **Key and token Security** section, down below, it's very important to understand the security risks.<br>
 To use this repository, you will need a Trello account (*remember, not your personal account!*) to obtain a Trello API key and a token.
@@ -56,9 +56,7 @@ I don't recommend this approach for released projects, or projects with huge pla
 
 Usage
 ----
-Unity Trello consists of four scripts, `TrelloAPI.cs`, `TrelloCard.cs`, `TrelloException.cs` and `TrelloSend.cs` to work.<br>
-All scripts include the namespace `Trello` to avoid issues with existing scripts. Remember to use it.
-
+Fill in the API details in the Scriptable Object, there is one in the Demo/UIToolkit folder "TrelloAPIData"
 #### TrelloAPI.cs
 Interacts directly with the Trello API using MiniJSON and uploads cards.<br>
 Used by other components, this script talks directly with the Trello API. It shouldn't be used directly.
@@ -73,10 +71,9 @@ ___
 Custom Exception for Trello scripts.
 ___
 
-#### TrelloSend.cs
-Script that holds keys and allows to send Trello cards.<br>
+#### TrelloSendSO.cs
+Scriptable Object that holds keys and allows to send Trello cards.<br>
 This script will hold the Trello API key, token and default board and list where cards will be uploaded.<br>
-It also contains `SendNewCard()` that will handle the selection of board, list and will upload the card all by itself.
 ___
 
 ### Creating and sending Trello cards:
